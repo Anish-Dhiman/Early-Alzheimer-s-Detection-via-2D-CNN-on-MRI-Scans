@@ -1,3 +1,4 @@
+
 # Early Alzheimer's Detection via 2D CNN on MRI Scans
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
@@ -461,17 +462,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Alzheimer's Association for disease information
 
 ### Institution
-- [Your College/University Name]
+- Chandigarh Group of Colleges,Landran
 - Department of Computer Science / Information Technology
 
 ---
 
 ## Contact
 
-**Project Maintainer:** [Your Name]  
-**Email:** [your.email@example.com]  
-**LinkedIn:** [Your LinkedIn Profile]  
-**GitHub:** [Your GitHub Profile]
+**Project Maintainer:** Anish Dhiman
+**Email:** dhimananish555@gmail.com
+**LinkedIn:** https://www.linkedin.com/in/anish-dhiman-837b61313/  
+**GitHub:** https://github.com/Anish-Dhiman
 
 ---
 
@@ -482,8 +483,8 @@ If you use this project in your research, please cite:
 ```bibtex
 @misc{alzheimers_detection_cnn,
   title={Early Alzheimer's Detection via 2D CNN on MRI Scans},
-  author={[Your Name]},
-  year={2024},
+  author={Anish Dhiman},
+  year={2026},
   howpublished={\url{https://github.com/yourusername/alzheimers-detection}}
 }
 ```
@@ -497,3 +498,4 @@ If you use this project in your research, please cite:
 Built with ❤️ for final year project demonstration
 
 </div>
+
