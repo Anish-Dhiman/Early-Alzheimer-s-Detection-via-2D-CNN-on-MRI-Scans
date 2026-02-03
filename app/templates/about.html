@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Alzheimer's Detection Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .content-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .content-card h3 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-card p, .content-card li {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        .pipeline-step {
+            background: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .pipeline-step h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .metric-card h4 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            padding: 20px;
+        }
+
+        .footer a {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-brain"></i>
+                NeuroScan AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Project Overview -->
+        <div class="content-card">
+            <h2><i class="fas fa-project-diagram"></i> Project Overview</h2>
+            <p>
+                This project presents an end-to-end solution for early detection of Alzheimer's disease 
+                using 2D Convolutional Neural Networks (CNN) on MRI scan images. The system is designed 
+                to assist healthcare professionals in identifying different stages of Alzheimer's disease 
+                through automated analysis of brain imaging.
+            </p>
+            
+            <h3>Problem Statement</h3>
+            <p>
+                Alzheimer's disease is a progressive neurodegenerative disorder that affects millions 
+                worldwide. Early detection is crucial for:
+            </p>
+            <ul>
+                <li>Timely intervention and treatment planning</li>
+                <li>Slowing disease progression through early medication</li>
+                <li>Improving quality of life for patients and caregivers</li>
+                <li>Reducing healthcare costs through preventive care</li>
+            </ul>
+
+            <h3>Our Solution</h3>
+            <p>
+                We developed a deep learning-based system that:
+            </p>
+            <ul class="feature-list">
+                <li>Automatically analyzes MRI scans for Alzheimer's markers</li>
+                <li>Classifies patients into 4 stages of cognitive decline</li>
+                <li>Provides visual explanations using Grad-CAM</li>
+                <li>Offers confidence scores for clinical decision support</li>
+            </ul>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="content-card">
+            <h2><i class="fas fa-code"></i> Technology Stack</h2>
+            
+            <h3>Deep Learning Framework</h3>
+            <div class="tech-stack">
+                <span class="tech-badge"><i class="fab fa-python"></i> TensorFlow 2.x</span>
+                <span class="tech-badge"><i class="fab fa-python"></i> Keras</span>
+                <span class="tech-badge">NumPy</span>
+                <span class="tech-badge">OpenCV</span>
+            </div>
+
+            <h3>Web Framework</h3>
+            <div class="tech-stack">
+                <span class="tech-badge"><i class="fab fa-python"></i> Flask</span>
+                <span class="tech-badge">Bootstrap 5</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">HTML5/CSS3</span>
+            </div>
+
+            <h3>Data Processing</h3>
+            <div class="tech-stack">
+                <span class="tech-badge">scikit-learn</span>
+                <span class="tech-badge">Matplotlib</span>
+                <span class="tech-badge">Seaborn</span>
+                <span class="tech-badge">Pandas</span>
+            </div>
+        </div>
+
+        <!-- Pipeline -->
+        <div class="content-card">
+            <h2><i class="fas fa-stream"></i> System Pipeline</h2>
+            
+            <div class="pipeline-step">
+                <h4>1. Data Preprocessing</h4>
+                <p>
+                    MRI scans are resized to 224x224 pixels and normalized. Data augmentation 
+                    (rotation, flip, zoom) is applied to increase dataset diversity and prevent overfitting.
+                </p>
+            </div>
+
+            <div class="pipeline-step">
+                <h4>2. CNN Feature Extraction</h4>
+                <p>
+                    A custom 2D CNN with 4 convolutional blocks extracts hierarchical features 
+                    from brain images, detecting patterns from simple edges to complex anatomical structures.
+                </p>
+            </div>
+
+            <div class="pipeline-step">
+                <h4>3. Classification</h4>
+                <p>
+                    Fully connected layers process extracted features to classify the MRI into 
+                    one of four categories: Non-Demented, Very Mild, Mild, or Moderate Demented.
+                </p>
+            </div>
+
+            <div class="pipeline-step">
+                <h4>4. Explainability (Grad-CAM)</h4>
+                <p>
+                    Gradient-weighted Class Activation Mapping highlights brain regions that 
+                    influenced the prediction, providing transparency for clinical validation.
+                </p>
+            </div>
+        </div>
+
+        <!-- Model Architecture -->
+        <div class="content-card">
+            <h2><i class="fas fa-network-wired"></i> CNN Architecture</h2>
+            
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="metric-card">
+                        <h4>4</h4>
+                        <p>Conv Blocks</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="metric-card">
+                        <h4>512</h4>
+                        <p>Max Filters</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="metric-card">
+                        <h4>224</h4>
+                        <p>Input Size</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="metric-card">
+                        <h4>4</h4>
+                        <p>Output Classes</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="mt-4">Key Features</h3>
+            <ul class="feature-list">
+                <li>Batch Normalization for training stability</li>
+                <li>Dropout layers to prevent overfitting</li>
+                <li>L2 Regularization for weight decay</li>
+                <li>Global Average Pooling to reduce parameters</li>
+                <li>Softmax output for multi-class classification</li>
+            </ul>
+        </div>
+
+        <!-- Classes -->
+        <div class="content-card">
+            <h2><i class="fas fa-list-ol"></i> Classification Classes</h2>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge bg-success">Non-Demented</span></td>
+                        <td>Normal brain structure, no signs of cognitive decline</td>
+                        <td>Baseline for healthy aging</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge bg-warning">Very Mild Demented</span></td>
+                        <td>Early signs, subtle memory issues, minimal atrophy</td>
+                        <td>Preclinical stage, monitoring needed</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge" style="background-color: #fd7e14;">Mild Demented</span></td>
+                        <td>Noticeable impairment, hippocampal atrophy visible</td>
+                        <td>Early intervention recommended</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge bg-danger">Moderate Demented</span></td>
+                        <td>Significant decline, widespread cortical atrophy</td>
+                        <td>Requires active management</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Future Work -->
+        <div class="content-card">
+            <h2><i class="fas fa-rocket"></i> Future Enhancements</h2>
+            
+            <ul class="feature-list">
+                <li><strong>3D CNN Integration:</strong> Process full 3D MRI volumes for richer spatial information</li>
+                <li><strong>Multimodal Fusion:</strong> Combine MRI with clinical data and cognitive tests</li>
+                <li><strong>Transformer Models:</strong> Explore Vision Transformers for medical imaging</li>
+                <li><strong>Federated Learning:</strong> Train on distributed hospital data without sharing</li>
+                <li><strong>PACS Integration:</strong> Direct integration with hospital imaging systems</li>
+                <li><strong>Mobile Deployment:</strong> Lightweight model for edge devices</li>
+            </ul>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="content-card" style="background: #fff3cd; border-left: 5px solid #ffc107;">
+            <h2><i class="fas fa-exclamation-triangle"></i> Important Disclaimer</h2>
+            <p>
+                <strong>This tool is for educational and research purposes only.</strong> It is not intended 
+                to replace professional medical diagnosis. All predictions should be validated by qualified 
+                healthcare professionals. Do not make medical decisions based solely on this system's output.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Final Year Project - Alzheimer's Detection using 2D CNN</p>
+        <p class="small mt-2">Built with <i class="fas fa-heart"></i> using TensorFlow & Flask</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
