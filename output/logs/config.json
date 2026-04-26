@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-03-12T19:24:52.197270",
+  "data_dir": "dataset",
+  "output_dir": "./output",
+  "epochs": 50,
+  "batch_size": 32,
+  "img_size": 224
+}

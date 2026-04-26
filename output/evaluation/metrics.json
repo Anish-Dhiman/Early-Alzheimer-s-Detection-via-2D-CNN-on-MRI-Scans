@@ -1,0 +1,25 @@
+{
+  "accuracy": 0.5205836373110996,
+  "precision_macro": 0.2499840086262039,
+  "recall_macro": 0.26662946428571427,
+  "f1_macro": 0.2073663405095222,
+  "precision_Non-Demented": 0.0,
+  "recall_Non-Demented": 0.0,
+  "f1_Non-Demented": 0.0,
+  "precision_Very Mild Demented": 0.0,
+  "recall_Very Mild Demented": 0.0,
+  "f1_Very Mild Demented": 0.0,
+  "precision_Mild Demented": 0.5245261984392419,
+  "recall_Mild Demented": 0.9802083333333333,
+  "f1_Mild Demented": 0.6833696441539578,
+  "precision_Moderate Demented": 0.47540983606557374,
+  "recall_Moderate Demented": 0.08630952380952381,
+  "f1_Moderate Demented": 0.14609571788413098,
+  "roc_auc_per_class": {
+    "Non-Demented": 0.7122752379833117,
+    "Very Mild Demented": 0.8997506925207757,
+    "Mild Demented": 0.7779903110879388,
+    "Moderate Demented": 0.6719125902165197
+  },
+  "roc_auc_macro": 0.7654822079521364
+}
