@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's Detection - Test Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container-test {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .test-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        .test-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .test-result {
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: monospace;
+            margin-top: 10px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .loading {
+            background: #e2e3e5;
+            color: #383d41;
+            border: 1px solid #d6d8db;
+        }
+        .btn-test {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .stat-box {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 11px;
+        }
+        .stat-value {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-test">
+        <h1>🧠 Alzheimer's Detection</h1>
+        <h4 style="text-align: center; color: #666; margin-bottom: 30px;">System Status & API Testing</h4>
+
+        <!-- Server Status -->
+        <div class="test-section">
+            <div class="test-title">1. Server Status</div>
+            <button class="btn btn-primary btn-test" onclick="testHealth()">Test Server Health</button>
+            <div id="health-result" class="test-result loading" style="display:none;">Loading...</div>
+        </div>
+
+        <!-- Model Info -->
+        <div class="test-section">
+            <div class="test-title">2. Model Information</div>
+            <button class="btn btn-primary btn-test" onclick="testModelInfo()">Get Model Info</button>
+            <div id="model-result" class="test-result loading" style="display:none;">Loading...</div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="test-section">
+            <div class="test-title">3. File Upload Test</div>
+            <input type="file" id="fileInput" class="form-control" accept="image/*">
+            <button class="btn btn-primary btn-test" onclick="testUpload()">Upload & Predict</button>
+            <div id="upload-result" class="test-result loading" style="display:none;">Loading...</div>
+        </div>
+
+        <!-- Summary -->
+        <div class="test-section">
+            <div class="test-title">4. Test Summary</div>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-label">Server</div>
+                    <div class="stat-value" id="stat-server">-</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Model</div>
+                    <div class="stat-value" id="stat-model">-</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Upload</div>
+                    <div class="stat-value" id="stat-upload">-</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">API</div>
+                    <div class="stat-value" id="stat-api">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="/" class="btn btn-success">Go to Home</a>
+            <a href="/about" class="btn btn-info">Go to About</a>
+        </div>
+    </div>
+
+    <script>
+        async function testHealth() {
+            const resultEl = document.getElementById('health-result');
+            resultEl.style.display = 'block';
+            resultEl.className = 'test-result loading';
+            resultEl.textContent = 'Testing server...';
+            
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultEl.className = 'test-result success';
+                    resultEl.innerHTML = `
+                        <strong>✓ Server is Online</strong><br>
+                        Status: ${data.status}<br>
+                        Ready: ${data.server_ready}<br>
+                        Model Loaded: ${data.model_loaded}<br>
+                        Time: ${data.timestamp}
+                    `;
+                    document.getElementById('stat-server').textContent = '✓';
+                    document.getElementById('stat-api').textContent = '✓';
+                } else {
+                    throw new Error('Unexpected response');
+                }
+            } catch (error) {
+                resultEl.className = 'test-result error';
+                resultEl.textContent = `✗ Error: ${error.message}`;
+                document.getElementById('stat-server').textContent = '✗';
+                document.getElementById('stat-api').textContent = '✗';
+            }
+        }
+
+        async function testModelInfo() {
+            const resultEl = document.getElementById('model-result');
+            resultEl.style.display = 'block';
+            resultEl.className = 'test-result loading';
+            resultEl.textContent = 'Fetching model info...';
+            
+            try {
+                const response = await fetch('/api/model-info');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const classesCount = Object.keys(data.classes).length;
+                    resultEl.className = 'test-result success';
+                    resultEl.innerHTML = `
+                        <strong>✓ Model Information Retrieved</strong><br>
+                        Classes: ${classesCount}<br>
+                        Input Shape: ${data.input_shape.join(' × ')}<br>
+                        Running Mode: ${data.running_mode}
+                    `;
+                    document.getElementById('stat-model').textContent = '✓';
+                } else {
+                    throw new Error('Failed to load model info');
+                }
+            } catch (error) {
+                resultEl.className = 'test-result error';
+                resultEl.textContent = `✗ Error: ${error.message}`;
+                document.getElementById('stat-model').textContent = '✗';
+            }
+        }
+
+        async function testUpload() {
+            const fileInput = document.getElementById('fileInput');
+            const resultEl = document.getElementById('upload-result');
+            
+            if (!fileInput.files.length) {
+                resultEl.style.display = 'block';
+                resultEl.className = 'test-result error';
+                resultEl.textContent = '✗ Please select a file';
+                return;
+            }
+            
+            resultEl.style.display = 'block';
+            resultEl.className = 'test-result loading';
+            resultEl.textContent = 'Uploading and analyzing image...';
+            
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            
+            try {
+                const response = await fetch('/api/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultEl.className = 'test-result success';
+                    resultEl.innerHTML = `
+                        <strong>✓ Prediction Successful</strong><br>
+                        Class: ${data.predicted_class}<br>
+                        Confidence: ${(data.confidence * 100).toFixed(2)}%<br>
+                        Severity: ${data.severity}
+                    `;
+                    document.getElementById('stat-upload').textContent = '✓';
+                } else {
+                    throw new Error(data.error || 'Prediction failed');
+                }
+            } catch (error) {
+                resultEl.className = 'test-result error';
+                resultEl.textContent = `✗ Error: ${error.message}`;
+                document.getElementById('stat-upload').textContent = '✗';
+            }
+        }
+
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            console.log('[v0] Test page loaded');
+        });
+    </script>
+</body>
+</html>
